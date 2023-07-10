@@ -14,17 +14,16 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cabang_id');
-            $table->foreignId('booking_service_id');
-            $table->string('bukti_dp');
-            $table->tinyInteger('status_dp');
-            $table->integer('bayar_dp');
-            $table->integer('total_harga');
-            $table->integer('bayar_offline');
-            $table->integer('kembalian');
-            $table->tinyInteger('status_lunas');
+            $table->string('bukti_dp')->nullable();
+            $table->tinyInteger('status_dp')->nullable();
+            $table->integer('bayar_dp')->nullable();
+            $table->integer('total_harga')->nullable();
+            $table->integer('bayar_offline')->nullable();
+            $table->integer('kembalian')->nullable();
+            $table->tinyInteger('status_lunas')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('karyawan_id');
-            $table->foreignId('jadwal_id');
+            $table->foreignId('jadwal_id')->nullable();
             $table->timestamps();
         });
     }

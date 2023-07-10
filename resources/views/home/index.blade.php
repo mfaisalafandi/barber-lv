@@ -41,16 +41,60 @@
         <!-- Arrow -->
         <div class="thumb-content-box">
             <div class="thumb-content">
-                <h3>make an appointment now</h3>
-                <a href="#make_appointment"> <i class="fas fa-long-arrow-alt-right"></i></a>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    make an appointment now
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <form action="/appointment" method="get">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Pilih Cabang Yang ingin Didatangi
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-12 my-3">
+                                        <div class="form-group">
+                                            <select name="cid" id="cabang_id" class="form-control">
+                                                <option value="">-- Cabang --</option>
+                                                @foreach ($cabangs as $cabang)
+                                                    <option value="{{ $cabang->id }}">{{ $cabang->name }} |
+                                                        {{ $cabang->alamat }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Understood</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+
     <!-- slider Area End-->
     <!--? About Area Start -->
     <section class="about-area section-padding30 position-relative">
         <div class="container">
             <div class="row align-items-center">
+                @if (session()->has('success'))
+                    <div class="alert alert-secondary" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="col-lg-6 col-md-11">
                     <!-- about-img -->
                     <div class="about-img ">
@@ -270,50 +314,6 @@
             </div>
         </div>
     </div>
-    <!-- Cut Details End -->
 
-    <div id="make_appointment"></div>
-    <div class="container">
-        <div class="row my-5">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
-                <h2 class="contact-title">MAKE APPOINTMENT</h2>
-                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
-                    novalidate="novalidate">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input class="form-control valid" name="name" id="name" type="text"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
-                                    placeholder="Enter your name">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input class="form-control valid" name="email" id="email" type="email"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
-                                    placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <input class="form-control" name="subject" id="subject" type="text"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                    placeholder="Enter Subject">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <button type="submit" class="button button-contactForm boxed-btn">Send</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <!-- Cut Details End -->
 @endsection

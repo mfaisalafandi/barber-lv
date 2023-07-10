@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('booking_services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('booking_id');
             $table->foreignId('service_id');
             $table->integer('waktu');
             $table->integer('harga');

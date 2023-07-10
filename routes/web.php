@@ -3,10 +3,13 @@
 use App\Http\Controllers\DashboardCabangController;
 use App\Http\Controllers\DashboardKaryawanController;
 use App\Http\Controllers\DashboardServiceController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
+use App\Models\Cabang;
 use App\Models\Karyawan;
 use App\Models\Service;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +26,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home/index', [
         'services' => Service::all(),
+        'cabangs' => Cabang::all(),
         'karyawans' => Karyawan::all()
     ]);
 });
+
+Route::get('/appointment', [HomeController::class, 'appointment']);
+Route::post('/appointment', [HomeController::class, 'appointment_make']);
+Route::get('/appointment/service/{id}', [HomeController::class, 'appointment_service']);
+Route::post('/appointment/service/{id}', [HomeController::class, 'appointment_service_make']);
+Route::delete('/appointment/service/{id}', [HomeController::class, 'appointment_service_delete']);
+Route::get('/appointment/jadwal/{id}', [HomeController::class, 'appointment_jadwal']);
+Route::post('/appointment/jadwal', [HomeController::class, 'appointment_jadwal_make']);
 
 Route::get('/about', function () {
     return view('home/about');
