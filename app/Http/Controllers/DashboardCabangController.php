@@ -54,7 +54,9 @@ class DashboardCabangController extends Controller
      */
     public function edit(Cabang $cabang)
     {
-        //
+        return view('dashboard.cabang.edit', [
+            'cabang' => $cabang
+        ]);
     }
 
     /**
@@ -62,7 +64,16 @@ class DashboardCabangController extends Controller
      */
     public function update(Request $request, Cabang $cabang)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'telp' => 'required|max:15|min:9',
+            'alamat' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Cabang::where('id', $cabang->id)->update($validatedData);
+        return redirect('/dashboard/cabang')->with('success', 'Cabang Berhasil Diupdate');
     }
 
     /**
@@ -70,6 +81,7 @@ class DashboardCabangController extends Controller
      */
     public function destroy(Cabang $cabang)
     {
-        //
+        Cabang::destroy($cabang->id);
+        return redirect('/dashboard/cabang')->with('success', 'Cabang Berhasil Dihapus!!');
     }
 }

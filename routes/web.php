@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardCabangController;
+use App\Http\Controllers\DashboardServiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,5 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::resource('/dashboard/cabang', DashboardCabangController::class)->middleware('auth');
+Route::resource('/dashboard/cabang', DashboardCabangController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/service', DashboardServiceController::class)->except('show')->middleware('auth');

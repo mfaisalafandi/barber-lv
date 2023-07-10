@@ -10,8 +10,8 @@
                 <li class="{{ Request::is('dashboard/cabang*') ? 'active' : '' }}">
                     <a href="/dashboard/cabang"> <i class="menu-icon fa fa-map-marker"></i>Cabang </a>
                 </li>
-                <li class="{{ Request::is('dashboard/services*') ? 'active' : '' }}">
-                    <a href="/dashboard/services"> <i class="menu-icon fa fa-tasks"></i>Services </a>
+                <li class="{{ Request::is('dashboard/service*') ? 'active' : '' }}">
+                    <a href="/dashboard/service"> <i class="menu-icon fa fa-tasks"></i>Services </a>
                 </li>
 
                 <li class="menu-title">Logout</li><!-- /.menu-title -->

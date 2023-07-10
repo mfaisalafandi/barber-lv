@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="stat-widget-five">
                         <div class="stat-icon dib flat-color-1">
-                            <div class="stat-text">Data Cabang</div>
+                            <div class="stat-text">Data Service</div>
                         </div>
                     </div>
                 </div>
@@ -24,31 +24,35 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Cabang</strong>
-                    <a href="/dashboard/cabang/create" class="btn btn-secondary float-right">Tambah</a>
+                    <strong class="card-title">Data Service</strong>
+                    <a href="/dashboard/service/create" class="btn btn-secondary float-right">Tambah</a>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Cabang</th>
-                                <th>Telepon</th>
-                                <th>Alamat</th>
+                                <th>Service</th>
+                                <th>Harga</th>
+                                <th>Waktu</th>
+                                <th>Deskripsi</th>
+                                <th>Gambar</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cabangs as $cabang)
+                            @foreach ($services as $service)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $cabang->name }}</td>
-                                    <td>{{ $cabang->telp }}</td>
-                                    <td>{{ $cabang->alamat }}</td>
+                                    <td>{{ $service->name }}</td>
+                                    <td>{{ $service->harga }}</td>
+                                    <td>{{ $service->waktu }}</td>
+                                    <td>{!! $service->deskripsi !!}</td>
+                                    <td><img src="{{ asset('storage/' . $service->image) }}" alt="Gambar"></td>
                                     <td>
-                                        <a href="/dashboard/cabang/{{ $cabang->id }}/edit"
+                                        <a href="/dashboard/service/{{ $service->id }}/edit"
                                             class="btn btn-warning">Edit</a>
-                                        <form action="/dashboard/cabang/{{ $cabang->id }}" method="post"
+                                        <form action="/dashboard/service/{{ $service->id }}" method="post"
                                             class="d-inline">
                                             @method('delete')
                                             @csrf

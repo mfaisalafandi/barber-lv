@@ -35,6 +35,10 @@ if (!isset($_SESSION['username'])) {
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
+    {{-- Trix --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
     <link rel="stylesheet" href="/dash/css/lib/datatable/dataTables.bootstrap.min.css">
 
     <style>
@@ -159,6 +163,8 @@ if (!isset($_SESSION['username'])) {
     <script src="/dash/js/lib/data-table/buttons.print.min.js"></script>
     <script src="/dash/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="/dash/js/init/datatables-init.js"></script>
+
+    <script src="/js/prevImg.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
