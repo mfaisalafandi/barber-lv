@@ -95,42 +95,19 @@
             </div>
             <!-- Section caption -->
             <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="services-caption text-center mb-30">
-                        <div class="service-icon">
-                            <i class="flaticon-healthcare-and-medical"></i>
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="#">Stylish Hair Cut</a></h4>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
-                                laborea.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="services-caption active text-center mb-30">
-                        <div class="service-icon">
-                            <i class="flaticon-fitness"></i>
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="#">Body Massege</a></h4>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
-                                laborea.</p>
+                @foreach ($services as $service)
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="services-caption text-center mb-30">
+                            <div class="service-icon">
+                                <i class="flaticon-healthcare-and-medical"></i>
+                            </div>
+                            <div class="service-cap">
+                                <h4><a href="#">{{ $service->name }}</a></h4>
+                                <p>{!! $service->deskripsi !!}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="services-caption text-center mb-30">
-                        <div class="service-icon">
-                            <i class="flaticon-clock"></i>
-                        </div>
-                        <div class="service-cap">
-                            <h4><a href="#">Breard Style</a></h4>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
-                                laborea.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -149,50 +126,19 @@
             </div>
             <div class="row team-active dot-style">
                 <!-- single Tem -->
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
-                    <div class="single-team mb-80 text-center">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team1.png" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>Master Barber</span>
-                            <h3><a href="#">Guy C. Pulido bks</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
-                    <div class="single-team mb-80 text-center">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team2.png" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>Color Expart</span>
-                            <h3><a href="#">Steve L. Nolan</a></h3>
+                @foreach ($karyawans as $karyawan)
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                        <div class="single-team mb-80 text-center">
+                            <div class="team-img">
+                                <img src="{{ asset('storage/' . $karyawan->image) }}" alt="">
+                            </div>
+                            <div class="team-caption">
+                                <span>karyawan</span>
+                                <h3><a href="#">{{ $karyawan->name }}</a></h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
-                    <div class="single-team mb-80 text-center">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team3.png" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>Master Barber</span>
-                            <h3><a href="#">Edgar P. Mathis</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
-                    <div class="single-team mb-80 text-center">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team2.png" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <span>Master Barber</span>
-                            <h3><a href="#">Edgar P. Mathis</a></h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -211,33 +157,11 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="pricing-list">
                                 <ul>
-                                    <li>Styling. . . . . . . . . . . . . . . . . . . . . . . . . . . .
-                                        <span>$25</span>
-                                    </li>
-                                    <li>Styling + Color. . . . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Styling + Tint. . . . . . . . . . . . . . . . . . . . . .<span>$65</span>
-                                    </li>
-                                    <li> Semi-permanent wave. . . . . . . . . . . . .<span>$65</span></li>
-                                    <li> Cut + Styling. . . . . . . . . . . . . . . . . . . . . .<span>$63</span>
-                                    </li>
-                                    <li> Cut + Styling + Color. . . . . . . . . . . . . <span>$100</span></li>
-                                    <li> Cut + Styling + Tint. . . . . . . . . . . . . . . .<span>$100</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="pricing-list">
-                                <ul>
-                                    <li>Cut. . . . . . . . . . . . . . . . . . . . . . . . . . . . .<span>$25</span>
-                                    </li>
-                                    <li>Shave. . . . . . . . . . . . . . . . . . . . . . . . . . <span>$65</span>
-                                    </li>
-                                    <li>Beard trim. . . . . . . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Cut + beard trim. . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Cut + shave. . . . . . . . . . . . . . . . . . . . . . .<span>$63</span>
-                                    </li>
-                                    <li>Clean up. . . . . . . . . . . . . . . . . . . . . . . . .<span>$100</span>
-                                    </li>
+                                    @foreach ($services as $service)
+                                        <li>{{ $service->name }}....................
+                                            <span>{{ $service->harga }}</span>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

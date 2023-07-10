@@ -19,7 +19,7 @@
 
                 <li class="menu-title">Logout</li><!-- /.menu-title -->
                 <li>
-                    <a href="../proses/logout.php"> <i class="menu-icon fa fa-sign-out"></i>Logout</a>
+                    <a href="/logout"> <i class="menu-icon fa fa-sign-out"></i>Logout</a>
                 </li>
 
             </ul>

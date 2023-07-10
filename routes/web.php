@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardKaryawanController;
 use App\Http\Controllers\DashboardServiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
+use App\Models\Karyawan;
+use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +21,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home/index');
+    return view('home/index', [
+        'services' => Service::all(),
+        'karyawans' => Karyawan::all()
+    ]);
 });
 
 Route::get('/about', function () {

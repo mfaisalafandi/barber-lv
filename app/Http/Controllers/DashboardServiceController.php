@@ -41,8 +41,6 @@ class DashboardServiceController extends Controller
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('images-service');
-        } else {
-            $validatedData['image'] = 'images-service/default.jpg';
         }
 
         Service::create($validatedData);

@@ -20,6 +20,7 @@
             <form method="POST" action="/dashboard/karyawan/{{ $karyawan->id }}" enctype="multipart/form-data">
                 @method('put')
                 @csrf
+                <input type="hidden" name="oldImage" value="{{ $karyawan->image }}" />
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama Karyawan</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"

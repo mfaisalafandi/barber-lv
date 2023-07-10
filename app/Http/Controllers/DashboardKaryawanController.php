@@ -100,7 +100,26 @@ class DashboardKaryawanController extends Controller
      */
     public function update(Request $request, Karyawan $karyawan)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'jk' => 'required',
+            'telp' => 'required|max:15|min:10',
+            'alamat' => 'required',
+            'cabang_id' => 'required',
+            'image' => 'image|file|max:1024'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('images-karyawan');
+        }
+
+        Karyawan::where('id', $karyawan->id)->update($validatedData);
+        return redirect('/dashboard/karyawan')->with('success', 'Karyawan Berhasil Diupdate');
     }
 
     /**
