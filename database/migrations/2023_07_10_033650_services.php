@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('waktu');
             $table->text('deskripsi');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

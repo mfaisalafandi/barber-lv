@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('jk', ['Laki-laki', 'Perempuan']);
             $table->string('telp');
             $table->text('alamat');
+            $table->string('image')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('cabang_id');
             $table->timestamps();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardCabangController;
+use App\Http\Controllers\DashboardKaryawanController;
 use App\Http\Controllers\DashboardServiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
@@ -37,3 +38,4 @@ Route::get('/dashboard', function () {
 
 Route::resource('/dashboard/cabang', DashboardCabangController::class)->except('show')->middleware('auth');
 Route::resource('/dashboard/service', DashboardServiceController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/karyawan', DashboardKaryawanController::class)->except('show')->middleware('auth');

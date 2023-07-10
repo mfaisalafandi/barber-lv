@@ -13,6 +13,9 @@
                 <li class="{{ Request::is('dashboard/service*') ? 'active' : '' }}">
                     <a href="/dashboard/service"> <i class="menu-icon fa fa-tasks"></i>Services </a>
                 </li>
+                <li class="{{ Request::is('dashboard/karyawan*') ? 'active' : '' }}">
+                    <a href="/dashboard/karyawan"> <i class="menu-icon fa fa-tasks"></i>Karyawan </a>
+                </li>
 
                 <li class="menu-title">Logout</li><!-- /.menu-title -->
                 <li>
