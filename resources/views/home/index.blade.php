@@ -42,7 +42,7 @@
         <div class="thumb-content-box">
             <div class="thumb-content">
                 <h3>make an appointment now</h3>
-                <a href="#"> <i class="fas fa-long-arrow-alt-right"></i></a>
+                <a href="#make_appointment"> <i class="fas fa-long-arrow-alt-right"></i></a>
             </div>
         </div>
     </div>
@@ -271,61 +271,49 @@
         </div>
     </div>
     <!-- Cut Details End -->
-    <!--? Blog Area Start -->
-    <section class="home-blog-area section-padding30">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
-                    <div class="section-tittle text-center mb-90">
-                        <span>our recent news</span>
-                        <h2>Hipos and tricks from recent blog</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="assets/img/gallery/home-blog1.png" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
+
+    <div id="make_appointment"></div>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 class="contact-title">MAKE APPOINTMENT</h2>
+                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+                    novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
                             </div>
-                            <div class="blog-cap">
-                                <p>| Physics</p>
-                                <h3><a href="blog_details.html">Footprints in Time is perfect House in
-                                        Kurashiki</a></h3>
-                                <a href="blog_details.html" class="more-btn">became a member »</a>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control valid" name="name" id="name" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
+                                    placeholder="Enter your name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control valid" name="email" id="email" type="email"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="subject" id="subject" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
+                                    placeholder="Enter Subject">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="assets/img/gallery/home-blog2.png" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
-                            </div>
-                            <div class="blog-cap">
-                                <p>| Physics</p>
-                                <h3><a href="blog_details.html">Footprints in Time is perfect House in
-                                        Kurashiki</a></h3>
-                                <a href="blog_details.html" class="more-btn">became a member »</a>
-                            </div>
-                        </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm boxed-btn">Send</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-    </section>
-    <!-- Blog Area End -->
+    </div>
 @endsection
