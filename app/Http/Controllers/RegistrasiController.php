@@ -21,12 +21,12 @@ class RegistrasiController extends Controller
             'jk' => 'required',
             'telp' => 'required|max:15|min:10',
             'alamat' => 'required',
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:5|max:255|'
         ]);
 
         $validatedDataUser = $request->validate([
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:5|max:255|'
         ]);
 

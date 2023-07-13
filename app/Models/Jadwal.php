@@ -10,10 +10,15 @@ class Jadwal extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['karyawan'];
+    protected $with = ['karyawan', 'booking'];
 
     public function karyawan()
     {
         return $this->belongsTo(Karyawan::class);
+    }
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
     }
 }

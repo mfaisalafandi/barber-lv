@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('bayar_offline')->nullable();
             $table->integer('kembalian')->nullable();
             $table->tinyInteger('status_lunas')->nullable();
+            $table->tinyInteger('status_proses')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('karyawan_id');
             $table->foreignId('jadwal_id')->nullable();

@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         $validatedData = $request->validate([
             'karyawan_id' => 'required|numeric',
-            'cabang_id' => 'required|numeric'
+            'cabang_id' => 'required|numeric',
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
@@ -82,11 +82,15 @@ class HomeController extends Controller
         $currentDate = $currentDateTime->format('Y-m-d');
         $oneDayLater = $currentDateTime->addDay()->format('Y-m-d');
 
+        $booking = Booking::where('id', $id)->first();
+
         return view('appointment/jadwal', [
             'booking_id' => $id,
             'service_books' => BookingService::where('booking_id', $id)->get(),
-            'jadwals' => Jadwal::whereDate('tanggal', $currentDate)
-                ->orWhereDate('tanggal', $oneDayLater)->get()
+            'jadwals' => Jadwal::where(function ($query) use ($currentDate, $oneDayLater) {
+                $query->where('tanggal', $currentDate)
+                    ->orWhere('tanggal', $oneDayLater);
+            })->where('karyawan_id', $booking->karyawan_id)->get()
         ]);
     }
 
@@ -109,7 +113,10 @@ class HomeController extends Controller
 
         $jadwal = Jadwal::create($validatedData);
 
-        Booking::where('id', $validatedData['booking_id'])->update(['jadwal_id' => $jadwal->id]);
+        Booking::where('id', $validatedData['booking_id'])->update([
+            'jadwal_id' => $jadwal->id,
+            'total_harga' => $request->total_harga
+        ]);
 
         return redirect('/')->with('success', 'Pembookingan Berhasil Dilakukan!!');
     }

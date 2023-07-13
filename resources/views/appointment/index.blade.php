@@ -42,7 +42,7 @@
         <div class="thumb-content-box">
             <div class="thumb-content">
                 <h3>make an appointment now</h3>
-                <a href="#make_appointment"> <i class="fas fa-long-arrow-alt-right"></i></a>
+                <a href="/appointment"> <i class="fas fa-long-arrow-alt-right"></i></a>
             </div>
         </div>
     </div>
@@ -51,39 +51,8 @@
     <div class="container">
         <div class="row my-5">
             <div class="col-lg-2"></div>
-            <div class="col-lg-8">
-                <h2 class="contact-title">MAKE APPOINTMENT</h2>
-                <form class="form-contact contact_form" action="/appointment" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12 my-3">
-                            <label for="karyawan_id" class="form-label">Pilih Karyawan</label>
-                            <div class="form-group">
-                                <input type="hidden" name="cabang_id" value="{{ $_GET['cid'] }}">
-                                <select name="karyawan_id" id="karyawan_id" class="form-control">
-                                    <option value="">-- Karyawan --</option>
-                                    @foreach ($karyawans as $karyawan)
-                                        <option value="{{ $karyawan->id }}">{{ $karyawan->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="form-group mt-3">
-                        <button type="submit" class="button button-contactForm boxed-btn">Buat Janji</button>
-                    </div>
-                </form>
-
-            </div>
+            @livewire('appointment')
         </div>
     </div>
 @endsection
-
-{{-- <div class="col-12">
-                            <div class="form-group">
-                                <input class="form-control" name="subject" id="subject" type="text"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                    placeholder="Enter Subject">
-                            </div>
-                        </div> --}}

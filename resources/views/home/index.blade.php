@@ -41,60 +41,22 @@
         <!-- Arrow -->
         <div class="thumb-content-box">
             <div class="thumb-content">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    make an appointment now
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
-                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <form action="/appointment" method="get">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Pilih Cabang Yang ingin Didatangi
-                                    </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col-12 my-3">
-                                        <div class="form-group">
-                                            <select name="cid" id="cabang_id" class="form-control">
-                                                <option value="">-- Cabang --</option>
-                                                @foreach ($cabangs as $cabang)
-                                                    <option value="{{ $cabang->id }}">{{ $cabang->name }} |
-                                                        {{ $cabang->alamat }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Understood</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
+                <h3>make an appointment now</h3>
+                <a href="/appointment"> <i class="fas fa-long-arrow-alt-right"></i></a>
             </div>
         </div>
     </div>
+    @if (session()->has('success'))
+        <div class="alert alert-secondary" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <!-- slider Area End-->
     <!--? About Area Start -->
     <section class="about-area section-padding30 position-relative">
         <div class="container">
             <div class="row align-items-center">
-                @if (session()->has('success'))
-                    <div class="alert alert-secondary" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
                 <div class="col-lg-6 col-md-11">
                     <!-- about-img -->
                     <div class="about-img ">

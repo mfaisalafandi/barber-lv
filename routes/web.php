@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardBookingController;
 use App\Http\Controllers\DashboardCabangController;
 use App\Http\Controllers\DashboardKaryawanController;
+use App\Http\Controllers\DashboardKasirController;
 use App\Http\Controllers\DashboardServiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -31,8 +33,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/appointment', [HomeController::class, 'appointment']);
-Route::post('/appointment', [HomeController::class, 'appointment_make']);
+Route::get('/appointment', [HomeController::class, 'appointment'])->middleware('auth');
+Route::post('/appointment', [HomeController::class, 'appointment_make'])->middleware('auth');
 Route::get('/appointment/service/{id}', [HomeController::class, 'appointment_service']);
 Route::post('/appointment/service/{id}', [HomeController::class, 'appointment_service_make']);
 Route::delete('/appointment/service/{id}', [HomeController::class, 'appointment_service_delete']);
@@ -45,14 +47,18 @@ Route::get('/about', function () {
 
 Route::get('/registrasi', [RegistrasiController::class, 'index']);
 Route::post('/registrasi', [RegistrasiController::class, 'store']);
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-})->middleware('auth');
+})->middleware('karyawan');
 
-Route::resource('/dashboard/cabang', DashboardCabangController::class)->except('show')->middleware('auth');
-Route::resource('/dashboard/service', DashboardServiceController::class)->except('show')->middleware('auth');
-Route::resource('/dashboard/karyawan', DashboardKaryawanController::class)->except('show')->middleware('auth');
+Route::get('dashboard/kasir/{id}', [DashboardKasirController::class, 'bayar'])->middleware('karyawan');
+
+Route::resource('/dashboard/cabang', DashboardCabangController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/service', DashboardServiceController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/karyawan', DashboardKaryawanController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/booking', DashboardBookingController::class)->except('show')->middleware('karyawan');
+Route::resource('/dashboard/kasir', DashboardKasirController::class)->except('show')->middleware('karyawan');

@@ -64,9 +64,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $total = 0; ?>
+                        <?php $total = 0;
+                        $total_harga = 0; ?>
                         @foreach ($service_books as $service_book)
-                            <?php $total += $service_book->waktu; ?>
+                            <?php $total += $service_book->waktu;
+                            $total_harga += $service_book->harga; ?>
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $service_book->service->name }}</td>
@@ -87,7 +89,8 @@
                         @endforeach
                     </tbody>
                 </table>
-                <p>Total Waktu : {{ $total }}</p>
+                <p>Total Waktu : {{ $total }} menit</p>
+                <p>Rp. {{ $total_harga }}</p>
 
                 <?php
                 $start_time = strtotime('08:00');
@@ -134,6 +137,7 @@
                             <label for="jadwal" class="form-label">Pilih Jadwal</label>
                             <div class="form-group">
                                 <input type="hidden" name="booking_id" value="{{ $booking_id }}">
+                                <input type="hidden" name="total_harga" value="{{ $total_harga }}">
                                 <select name="jadwal" id="jadwal" class="form-control">
                                     <option value="">-- Jadwal --</option>
                                     @foreach ($jadwal_bisa_dibooking as $jadwal)
