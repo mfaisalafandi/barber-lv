@@ -17,7 +17,7 @@
                             <a href="/dashboard/service"> <i class="menu-icon fa fa-tasks"></i>Services </a>
                         </li>
                         <li class="{{ Request::is('dashboard/karyawan*') ? 'active' : '' }}">
-                            <a href="/dashboard/karyawan"> <i class="menu-icon fa fa-tasks"></i>Karyawan </a>
+                            <a href="/dashboard/karyawan"> <i class="menu-icon fa fa-users"></i>Karyawan </a>
                         </li>
                     @endcan
 
@@ -26,7 +26,7 @@
                         <a href="/dashboard/booking"> <i class="menu-icon fa fa-stack-overflow"></i>Antrian</a>
                     </li>
                     <li class="{{ Request::is('dashboard/kasir*') ? 'active' : '' }}">
-                        <a href="/dashboard/kasir"> <i class="menu-icon fa fa-stack-overflow"></i>Kasir</a>
+                        <a href="/dashboard/kasir"> <i class="menu-icon fa fa-money"></i>Kasir</a>
                     </li>
                 @endcan
 

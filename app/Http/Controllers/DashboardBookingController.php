@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\BookingService;
 use App\Models\Jadwal;
+use App\Models\Karyawan;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +17,19 @@ class DashboardBookingController extends Controller
      */
     public function index()
     {
-        return view('dashboard.booking.index', [
-            'bookings' => Booking::where('status_proses', null)->where('jadwal_id', '<>', null)->get()
-        ]);
+        if (auth()->user()->level == 1) {
+            $karyawan = Karyawan::where('user_id', auth()->user()->id)->first();
+            return view('dashboard.booking.index', [
+                'bookings' => Booking::where('status_proses', null)
+                    ->where('jadwal_id', '<>', null)
+                    ->where('karyawan_id', $karyawan->id)->get()
+            ]);
+        } else if (auth()->user()->level == 2) {
+            return view('dashboard.booking.index', [
+                'bookings' => Booking::where('status_proses', null)
+                    ->where('jadwal_id', '<>', null)->get()
+            ]);
+        }
     }
 
     /**

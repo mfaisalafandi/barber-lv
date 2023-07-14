@@ -126,7 +126,7 @@
                 <div class="col-xl-8 col-lg-8 col-md-11 col-sm-11">
                     <div class="section-tittle text-center mb-100">
                         <span>Professional Teams</span>
-                        <h2>Our award winner hair cut exparts for you</h2>
+                        <h2>Our Professional Barber</h2>
                     </div>
                 </div>
             </div>

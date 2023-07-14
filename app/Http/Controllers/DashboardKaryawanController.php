@@ -17,7 +17,7 @@ class DashboardKaryawanController extends Controller
     public function index()
     {
         return view('dashboard.karyawan.index', [
-            'karyawans' => Karyawan::all()
+            'karyawans' => Karyawan::where('cabang_id', '<>', null)->get()
         ]);
     }
 

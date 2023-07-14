@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\BookingService;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
 class DashboardKasirController extends Controller
@@ -13,9 +14,17 @@ class DashboardKasirController extends Controller
      */
     public function index()
     {
-        return view('dashboard.kasir.index', [
-            'kasirs' => Booking::where('status_proses', 1)->where('status_lunas', null)->get()
-        ]);
+        if (auth()->user()->level == 1) {
+            $karyawan = Karyawan::where('user_id', auth()->user()->id)->first();
+            return view('dashboard.kasir.index', [
+                'kasirs' => Booking::where('status_proses', 1)->where('status_lunas', null)
+                    ->where('karyawan_id', $karyawan->id)->get()
+            ]);
+        } else if (auth()->user()->level == 2) {
+            return view('dashboard.kasir.index', [
+                'kasirs' => Booking::where('status_proses', 1)->where('status_lunas', null)->get()
+            ]);
+        }
     }
 
     public function bayar($id)

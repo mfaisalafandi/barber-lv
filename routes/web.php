@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('home/index', [
         'services' => Service::all(),
         'cabangs' => Cabang::all(),
-        'karyawans' => Karyawan::all()
+        'karyawans' => Karyawan::where('cabang_id', '<>', null)->get()
     ]);
 });
 
