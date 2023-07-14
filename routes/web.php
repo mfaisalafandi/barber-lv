@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardServiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\ReportPelangganController;
 use App\Models\Cabang;
 use App\Models\Karyawan;
 use App\Models\Service;
@@ -62,3 +63,5 @@ Route::resource('/dashboard/service', DashboardServiceController::class)->except
 Route::resource('/dashboard/karyawan', DashboardKaryawanController::class)->except('show')->middleware('admin');
 Route::resource('/dashboard/booking', DashboardBookingController::class)->except('show')->middleware('karyawan');
 Route::resource('/dashboard/kasir', DashboardKasirController::class)->except('show')->middleware('karyawan');
+
+Route::get('/dashboard/pelangganl', [ReportPelangganController::class, 'index'])->middleware('admin');

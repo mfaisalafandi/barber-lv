@@ -23,10 +23,18 @@
 
                     <li class="menu-title">Fitur</li><!-- /.menu-title -->
                     <li class="{{ Request::is('dashboard/booking*') ? 'active' : '' }}">
-                        <a href="/dashboard/booking"> <i class="menu-icon fa fa-stack-overflow"></i>Antrian</a>
+                        <a href="/dashboard/booking"> <i class="menu-icon fa fa-briefcase"></i>Antrian</a>
                     </li>
                     <li class="{{ Request::is('dashboard/kasir*') ? 'active' : '' }}">
                         <a href="/dashboard/kasir"> <i class="menu-icon fa fa-money"></i>Kasir</a>
+                    </li>
+
+                    <li class="menu-title">Laporan</li><!-- /.menu-title -->
+                    <li class="{{ Request::is('dashboard/pelangganl*') ? 'active' : '' }}">
+                        <a href="/dashboard/pelangganl"> <i class="menu-icon fa fa-flag"></i>Pelanggan</a>
+                    </li>
+                    <li class="{{ Request::is('dashboard/bookingl*') ? 'active' : '' }}">
+                        <a href="/dashboard/bookingl"> <i class="menu-icon fa fa-stack-overflow"></i>Booking</a>
                     </li>
                 @endcan
 
